@@ -1,0 +1,38 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --border: 2px solid var(--color);
+  --color: midnightblue;
+  --bg-color: darkgray;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  border: var(--border);
+  width: 80%;
+  height: 120px;
+  max-width: 450px;
+  font-weight: bold;
+  font-size: 3.2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--color);
+}
