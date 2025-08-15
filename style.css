@@ -20,6 +20,7 @@ body {
   height: 100%;
   background-color: var(--bg-color);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -35,4 +36,27 @@ body {
   justify-content: space-evenly;
   align-items: center;
   color: var(--color);
+}
+
+#alarm > div{
+  display: flex;
+  gap: 0.5em;
+  margin-top: 3em;
+  font-size: 1.2rem;
+  align-items: center;
+}
+
+#alarm > div > button{
+  padding: 0.5em;
+  font-weight: bold;
+  border: var(--border);
+  background-color: var(--bg-color);
+  color: var(--color);
+  cursor: pointer;
+  transition: 0.2s ease-in;
+
+  &:hover{
+    color: var(--bg-color);
+    background-color: var(--color);
+  }
 }
