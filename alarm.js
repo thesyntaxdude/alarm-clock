@@ -1,3 +1,5 @@
+import { clock } from "./clock.js";
+
 export class Alarm {
   static dialog = document.querySelector("#add-alarm");
   static createAlarmBtn = document.querySelector("#create-alarm");
@@ -5,20 +7,9 @@ export class Alarm {
   static deleteAlarmBtn = document.querySelector("#close-btn");
   static createdAlarmsContainer = document.querySelector("#created-alarms");
   static body = document.querySelector("body");
-  static alarmList = [
-    {
-      alarmName: "wake up",
-      alarmDate: "2025-10-02",
-      alarmTime: "04: 26",
-      uuid: crypto.randomUUID(),
-    },
-    {
-      alarmName: "wake up wake up wake up wake up",
-      alarmDate: "2025-10-02",
-      alarmTime: "04: 26",
-      uuid: crypto.randomUUID(),
-    },
-  ];
+  static soundAlarmPopup = document.querySelector("#active-alarm");
+  static stopAlarmBtn = document.querySelector("#stop-alarm");
+  static alarmList = JSON.parse(localStorage.getItem("alarmList")) || [];
 
   openModal() {
     Alarm.createAlarmBtn.addEventListener("click", () => {
@@ -45,6 +36,7 @@ export class Alarm {
     e.preventDefault();
     const alarmTask = this.createAlarmTask();
     Alarm.alarmList.push(alarmTask);
+    localStorage.setItem("alarmList", JSON.stringify(Alarm.alarmList));
     this.renderAlarmTasks();
     document.querySelector("#alarm-name").value = "";
     document.querySelector("#alarm-date").value = "";
@@ -86,8 +78,8 @@ export class Alarm {
       Alarm.alarmList.forEach((alarmTask) => {
         if (alarmTask.uuid === removeTask.getAttribute("data-uuid")) {
           const index = Alarm.alarmList.indexOf(alarmTask);
-          console.log(index);
           Alarm.alarmList.splice(index, 1);
+          localStorage.setItem("alarmList", JSON.stringify(Alarm.alarmList));
           this.renderAlarmTasks();
         }
       });
@@ -96,5 +88,34 @@ export class Alarm {
 
   deleteNow() {
     Alarm.body.addEventListener("click", (e) => this.deleteAlarmTasks(e));
+  }
+
+  soundAlarm() {
+    setInterval(() => {
+      const currentTime = new Date();
+      Alarm.alarmList.forEach((alarmTask) => {
+        const fullDate = `${alarmTask.alarmDate} ${alarmTask.alarmTime}`;
+        const alarmDate = new Date(fullDate);
+        if (currentTime >= alarmDate) {
+          new Audio("./alarm.wav").play();
+          Alarm.soundAlarmPopup.showModal();
+        }
+      });
+    }, 1000);
+  }
+
+  stopAlarm() {
+    const currentTime = new Date();
+    Alarm.alarmList.forEach((alarmTask) => {
+      const fullDate = `${alarmTask.alarmDate} ${alarmTask.alarmTime}`;
+      const alarmDate = new Date(fullDate);
+      if (currentTime >= alarmDate) {
+        const index = Alarm.alarmList.indexOf(alarmTask);
+        Alarm.alarmList.splice(index, 1);
+        localStorage.setItem("alarmList", JSON.stringify(Alarm.alarmList));
+        Alarm.soundAlarmPopup.close();
+      }
+    });
+    this.renderAlarmTasks();
   }
 }

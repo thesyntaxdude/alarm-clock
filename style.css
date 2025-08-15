@@ -67,7 +67,7 @@ button {
   }
 }
 
-#add-alarm {
+#add-alarm, #active-alarm {
   margin: auto;
   width: 80%;
   max-width: 450px;
@@ -77,9 +77,9 @@ button {
   border-radius: 0.5em;
 }
 
-#add-alarm::backdrop {
+#add-alarm::backdrop, #active-alarm::backdrop {
   background-color: var(--color);
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
 #add-alarm>form {
@@ -159,4 +159,22 @@ form>input::placeholder {
   right: 5%;
   font-size: 1rem;
   border-radius: 50%;
+}
+
+#active-alarm{
+  text-align: center;
+}
+#active-alarm button{
+  display: block;
+  margin: auto;
+  margin-top: 1em;
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+
+  &:hover{
+    background-color: red;
+    color: white;
+    opacity: 0.7;
+  }
 }

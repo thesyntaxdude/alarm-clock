@@ -14,26 +14,9 @@ setInterval(() => {
   alarm.openModal();
   alarm.closeModal();
   alarm.deleteNow();
+  alarm.soundAlarm();
+  Alarm.stopAlarmBtn.addEventListener("click", () => alarm.stopAlarm());
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ----------legacy functional programming code----------
 
