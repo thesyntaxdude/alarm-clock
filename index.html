@@ -21,9 +21,20 @@
     <div id="created-alarms"></div>
     <div>
       <p>Create a New Alarm</p>
-      <button id="set-alarm">Set Alarm</button>
+      <button id="create-alarm">Set Alarm</button>
     </div>
   </section>
+
+
+  <dialog id="add-alarm">
+    <button id="close-btn">X</button>
+    <form>
+      <input type="text" id="alarm-name" name="alarm-name" placeholder="Give Your Alarm a Name">
+      <input type="date" id="alarm-date" name="alarm-date">
+      <input type="time" id="alarm-time" name="alarm-time">
+      <button id="submit">Add Alarm</button>
+    </form>
+  </dialog>
 </body>
 
 </html>
