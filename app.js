@@ -1,30 +1,22 @@
-import { Clock, app } from "./func.js";
-
-
+import { Clock, clock } from "./clock.js";
+import { Alarm } from "./alarm.js";
 
 setInterval(() => {
-  Clock.hoursElement.textContent = app.getCurrentHour();
-  Clock.minutesElement.textContent = app.getCurrentMinute();
-  Clock.secondsElement.textContent = app.getCurrentSecond();
+  Clock.hoursElement.textContent = clock.getCurrentHour();
+  Clock.minutesElement.textContent = clock.getCurrentMinute();
+  Clock.secondsElement.textContent = clock.getCurrentSecond();
 }, 1000);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(() => {
+  const alarm = new Alarm();
+  alarm.renderAlarmTasks();
+  alarm.saveNow();
+  alarm.openModal();
+  alarm.closeModal();
+  alarm.deleteNow();
+  alarm.soundAlarm();
+  Alarm.stopAlarmBtn.addEventListener("click", () => alarm.stopAlarm());
+})();
 
 // ----------legacy functional programming code----------
 

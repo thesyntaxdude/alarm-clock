@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
 :root {
   --border: 2px solid var(--color);
   --color: midnightblue;
@@ -17,6 +21,8 @@ html {
 }
 
 body {
+  width: 95%;
+  margin: auto;
   height: 100%;
   background-color: var(--bg-color);
   display: flex;
@@ -38,7 +44,7 @@ body {
   color: var(--color);
 }
 
-#alarm > div{
+#alarm>div {
   display: flex;
   gap: 0.5em;
   margin-top: 3em;
@@ -46,17 +52,129 @@ body {
   align-items: center;
 }
 
-#alarm > div > button{
+button {
   padding: 0.5em;
   font-weight: bold;
   border: var(--border);
-  background-color: var(--bg-color);
+  background-color: transparent;
   color: var(--color);
   cursor: pointer;
   transition: 0.2s ease-in;
 
-  &:hover{
-    color: var(--bg-color);
+  &:hover {
+    color: white;
     background-color: var(--color);
+  }
+}
+
+#add-alarm, #active-alarm {
+  margin: auto;
+  width: 80%;
+  max-width: 450px;
+  border: none;
+  padding-inline: 1em;
+  padding-block: 1.5em;
+  border-radius: 0.5em;
+}
+
+#add-alarm::backdrop, #active-alarm::backdrop {
+  background-color: var(--color);
+  opacity: 0.3;
+}
+
+#add-alarm>form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5em;
+}
+
+form>input {
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+form>input::placeholder {
+  padding-left: 0.5em;
+}
+
+#alarm {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#created-alarms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 0.5em;
+}
+
+.alarmTask {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 0.5em;
+}
+
+.alarmTask .headers {
+  font-weight: bold;
+  display: block;
+  color: var(--color);
+}
+
+.alarmTask>li {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  color: rgb(45, 43, 43);
+}
+
+.alarmTask>li:first-of-type{
+  width: 180px;
+}
+.alarmTask>li:nth-child(2){
+  min-width: 100px;
+}
+.alarmTask>li:nth-child(3){
+  min-width: 55px;
+}
+
+.delete-btn {
+  border: none;
+
+  &:hover {
+    color: initial;
+    background-color: initial;
+    opacity: 0.8;
+    scale: 1.1;
+  }
+}
+
+#close-btn {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+#active-alarm{
+  text-align: center;
+}
+#active-alarm button{
+  display: block;
+  margin: auto;
+  margin-top: 1em;
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+
+  &:hover{
+    background-color: red;
+    color: white;
+    opacity: 0.7;
   }
 }

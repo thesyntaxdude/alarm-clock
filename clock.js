@@ -33,7 +33,7 @@ export class Clock {
   }
 }
 
-export const app = new Clock();
-Clock.hoursElement.textContent = app.getCurrentHour();
-Clock.minutesElement.textContent = app.getCurrentMinute();
-Clock.secondsElement.textContent = app.getCurrentSecond();
+export const clock = new Clock();
+Clock.hoursElement.textContent = clock.getCurrentHour();
+Clock.minutesElement.textContent = clock.getCurrentMinute();
+Clock.secondsElement.textContent = clock.getCurrentSecond();
