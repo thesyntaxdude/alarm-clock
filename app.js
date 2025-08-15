@@ -1,52 +1,22 @@
+import { Clock, app } from "./func.js";
 
-// const hoursElement = document.querySelector("#hours");
-// const minutesElement = document.querySelector("#minutes");
-// const secondsElement = document.querySelector("#seconds");
-class Clock {
-  static hoursElement = document.querySelector("#hours");
-  static minutesElement = document.querySelector("#minutes");
-  static secondsElement = document.querySelector("#seconds");
 
-  getCurrentDate() {
-    const currentDate = new Date();
-    return currentDate;
-  }
-
-  getCurrentHour() {
-    const currentHour = this.getCurrentDate()
-      .getHours()
-      .toString()
-      .padStart(2, "0");
-    return currentHour;
-  }
-
-  getCurrentMinute() {
-    const currentMinute = this.getCurrentDate()
-      .getMinutes()
-      .toString()
-      .padStart(2, "0");
-    return currentMinute;
-  }
-
-  getCurrentSecond() {
-    const currentSecond = this.getCurrentDate()
-      .getSeconds()
-      .toString()
-      .padStart(2, "0");
-    return currentSecond;
-  }
-}
-
-const clock = new Clock();
-Clock.hoursElement.textContent = clock.getCurrentHour();
-Clock.minutesElement.textContent = clock.getCurrentMinute();
-Clock.secondsElement.textContent = clock.getCurrentSecond();
 
 setInterval(() => {
-  Clock.hoursElement.textContent = clock.getCurrentHour();
-  Clock.minutesElement.textContent = clock.getCurrentMinute();
-  Clock.secondsElement.textContent = clock.getCurrentSecond();
+  Clock.hoursElement.textContent = app.getCurrentHour();
+  Clock.minutesElement.textContent = app.getCurrentMinute();
+  Clock.secondsElement.textContent = app.getCurrentSecond();
 }, 1000);
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -58,6 +28,9 @@ setInterval(() => {
 
 // ----------legacy functional programming code----------
 
+// const hoursElement = document.querySelector("#hours");
+// const minutesElement = document.querySelector("#minutes");
+// const secondsElement = document.querySelector("#seconds");
 
 // getCurrentDate();
 // setInterval(getCurrentDate, 1000);
@@ -74,5 +47,3 @@ setInterval(() => {
 //     .toString()
 //     .padStart(2, "0");
 // }
-
-
