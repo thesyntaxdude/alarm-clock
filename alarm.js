@@ -8,6 +8,7 @@ export class Alarm {
   static createdAlarmsContainer = document.querySelector("#created-alarms");
   static body = document.querySelector("body");
   static soundAlarmPopup = document.querySelector("#active-alarm");
+  static alarmPopupMessageField = document.querySelector("#active-alarm > p");
   static stopAlarmBtn = document.querySelector("#stop-alarm");
   static alarmList = JSON.parse(localStorage.getItem("alarmList")) || [];
 
@@ -98,6 +99,7 @@ export class Alarm {
         const alarmDate = new Date(fullDate);
         if (currentTime >= alarmDate) {
           new Audio("./alarm.wav").play();
+          Alarm.alarmPopupMessageField.innerHTML = `Your alarm <span class = "alarm-message-name">[${alarmTask.alarmName}]</span> just rang!`;
           Alarm.soundAlarmPopup.showModal();
         }
       });

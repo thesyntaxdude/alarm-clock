@@ -67,7 +67,8 @@ button {
   }
 }
 
-#add-alarm, #active-alarm {
+#add-alarm,
+#active-alarm {
   margin: auto;
   width: 80%;
   max-width: 450px;
@@ -77,7 +78,8 @@ button {
   border-radius: 0.5em;
 }
 
-#add-alarm::backdrop, #active-alarm::backdrop {
+#add-alarm::backdrop,
+#active-alarm::backdrop {
   background-color: var(--color);
   opacity: 0.3;
 }
@@ -114,9 +116,9 @@ form>input::placeholder {
 
 .alarmTask {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   margin-top: 0.5em;
 }
 
@@ -132,13 +134,15 @@ form>input::placeholder {
   color: rgb(45, 43, 43);
 }
 
-.alarmTask>li:first-of-type{
+.alarmTask>li:first-of-type {
   width: 180px;
 }
-.alarmTask>li:nth-child(2){
+
+.alarmTask>li:nth-child(2) {
   min-width: 100px;
 }
-.alarmTask>li:nth-child(3){
+
+.alarmTask>li:nth-child(3) {
   min-width: 55px;
 }
 
@@ -161,10 +165,11 @@ form>input::placeholder {
   border-radius: 50%;
 }
 
-#active-alarm{
+#active-alarm {
   text-align: center;
 }
-#active-alarm button{
+
+#active-alarm button {
   display: block;
   margin: auto;
   margin-top: 1em;
@@ -172,9 +177,20 @@ form>input::placeholder {
   color: white;
   border: 1px solid red;
 
-  &:hover{
+  &:hover {
     background-color: red;
     color: white;
     opacity: 0.7;
   }
+}
+
+#active-alarm>p {
+  text-transform: capitalize;
+}
+
+.alarm-message-name{
+  font-weight: bold;
+  font-style: italic;
+  display: block;
+  margin-block: 0.8em;
 }
