@@ -10,21 +10,42 @@
 </head>
 
 <body>
-  <section id="container">
-    <div class="time-box" id="hours"></div>
-    <div class="colon">:</div>
-    <div class="time-box" id="minutes"></div>
-    <div class="colon">:</div>
-    <div class="time-box" id="seconds"></div>
-  </section>
-  <section id="alarm">
-    <div id="created-alarms"></div>
-    <div>
-      <p>Create a New Alarm</p>
-      <button id="create-alarm">Set Alarm</button>
-    </div>
-  </section>
+  <div class="clock-wrapper">
+    <button  class="switcher" id="stopwatch-switcher">switch to stopwatch</button>
+    <h1>CLOCK WORK</h1>
+    <section id="container">
+      <div class="time-box" id="hours"></div>
+      <div>:</div>
+      <div class="time-box" id="minutes"></div>
+      <div>:</div>
+      <div class="time-box" id="seconds"></div>
+    </section>
+    <section id="alarm">
+      <div id="created-alarms"></div>
+      <div>
+        <p>Create a New Alarm</p>
+        <button id="create-alarm">Set Alarm</button>
+      </div>
+    </section>
+  </div>
 
+  <div class="stopwatch-wrapper">
+    <button class="switcher" id="clock-switcher">switch to alarm clock</button>
+    <h2>STOP WATCH</h2>
+    <section id="stopwatch-container">
+      <div class="time-box" id="stopwatch-hours"></div>
+      <div>:</div>
+      <div class="time-box" id="stopwatch-minutes"></div>
+      <div>:</div>
+      <div class="time-box" id="stopwatch-seconds"></div>
+    </section>
+    <section id="stopwatch">
+      <div>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+      </div>
+    </section>
+  </div>
 
   <dialog id="add-alarm">
     <button id="close-btn">X</button>
@@ -36,7 +57,7 @@
     </form>
   </dialog>
 
-  <dialog  id="active-alarm">
+  <dialog id="active-alarm">
     <p>Your Alarm Just Rang</p>
     <button id="stop-alarm">STOP ALARM</button>
   </dialog>

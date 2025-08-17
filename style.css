@@ -31,7 +31,20 @@ body {
   align-items: center;
 }
 
-#container {
+h1,
+h2 {
+  font-size: 2.5rem;
+  color: white;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: var(--color);
+  font-weight: 900;
+  margin-block: 1em;
+  width: fit-content;
+}
+
+#container,
+#stopwatch-container {
   border: var(--border);
   width: 80%;
   height: 120px;
@@ -188,9 +201,54 @@ form>input::placeholder {
   text-transform: capitalize;
 }
 
-.alarm-message-name{
+.alarm-message-name {
   font-weight: bold;
   font-style: italic;
   display: block;
   margin-block: 0.8em;
+}
+
+.stopwatch-wrapper,
+.clock-wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.switcher {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  text-transform: uppercase;
+}
+
+.stopwatch-wrapper {
+  display: none;
+}
+
+#stopwatch {
+  margin-top: 2.5em;
+  width: 60%;
+
+}
+
+#stopwatch div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#stopwatch div button {
+  background-color: var(--color);
+  color: white;
+  width: 5em;
+
+  &:last-of-type {
+    background-color: red;
+    border-color: red;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
 }

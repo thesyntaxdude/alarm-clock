@@ -1,12 +1,17 @@
 import { Clock, clock } from "./clock.js";
 import { Alarm } from "./alarm.js";
+import { Stopwatch } from "./stopwatch.js";
 
-setInterval(() => {
-  Clock.hoursElement.textContent = clock.getCurrentHour();
-  Clock.minutesElement.textContent = clock.getCurrentMinute();
-  Clock.secondsElement.textContent = clock.getCurrentSecond();
-}, 1000);
+// interacting with the clock
+(() => {
+  setInterval(() => {
+    Clock.hoursElement.textContent = clock.getCurrentHour();
+    Clock.minutesElement.textContent = clock.getCurrentMinute();
+    Clock.secondsElement.textContent = clock.getCurrentSecond();
+  }, 1000);
+})();
 
+// interacting with the alarm
 (() => {
   const alarm = new Alarm();
   alarm.renderAlarmTasks();
@@ -18,24 +23,30 @@ setInterval(() => {
   Alarm.stopAlarmBtn.addEventListener("click", () => alarm.stopAlarm());
 })();
 
-// ----------legacy functional programming code----------
+// interacting with the stopwatch
+(() => {
+  const stopwatch = new Stopwatch();
+  stopwatch.showTime();
+  Stopwatch.startBtn.addEventListener("click", () => stopwatch.startTimer());
+  Stopwatch.stopBtn.addEventListener("click", () => stopwatch.stopTimer());
+})();
 
-// const hoursElement = document.querySelector("#hours");
-// const minutesElement = document.querySelector("#minutes");
-// const secondsElement = document.querySelector("#seconds");
+// UI stuff
+(() => {
+  const clockSwitcherBtn = document.querySelector("#clock-switcher");
+  const stopwatchSwitcherBtn = document.querySelector("#stopwatch-switcher");
+  const clockMode = document.querySelector(".clock-wrapper");
+  const stopwatchMode = document.querySelector(".stopwatch-wrapper");
 
-// getCurrentDate();
-// setInterval(getCurrentDate, 1000);
+  clockSwitcherBtn.addEventListener("click", () =>
+    switchMode(clockMode, stopwatchMode)
+  );
+  stopwatchSwitcherBtn.addEventListener("click", () =>
+    switchMode(stopwatchMode, clockMode)
+  );
 
-// function getCurrentDate() {
-//   const currentDate = new Date();
-//   hoursElement.textContent = currentDate.getHours().toString().padStart(2, "0");
-//   minutesElement.textContent = currentDate
-//     .getMinutes()
-//     .toString()
-//     .padStart(2, "0");
-//   secondsElement.textContent = currentDate
-//     .getSeconds()
-//     .toString()
-//     .padStart(2, "0");
-// }
+  function switchMode(activeMode, inactiveMode) {
+    activeMode.style.display = "flex";
+    inactiveMode.style.display = "none";
+  }
+})();
